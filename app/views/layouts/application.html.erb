@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tweeter</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <div class="nav">
+   <p><%= link_to 'New Tweet',root_path ,class:"link" %></p>
+    <% if user_signed_in? %>
+ <p><%= link_to current_user.name ,edit_user_registration_path ,class:"link post" %></p>
+  <p><%= link_to 'Logout' ,destroy_user_session_path,method: :delete ,class:"link" %></p>
+  <% else %>
+   <p><%= link_to "Sign In" ,new_user_session_path ,class:"link" %></p>
+   <p><%= link_to "Sign Up" ,new_user_registration_path ,class:"link" %></p>
+ <% end %>
+
+  </div>
+
+
+
+
+ 
+    <%= yield %>
+  </body>
+</html>
+  # <% if flash[:notice] %>
+  # <%= notice %>
+  # <% end %>
+
+  #  <% if flash[:alert] %>
+  #  <%= alert %>
+
+
+  # <% end %>

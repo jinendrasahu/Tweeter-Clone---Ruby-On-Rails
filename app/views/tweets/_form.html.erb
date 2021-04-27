@@ -1,0 +1,10 @@
+<%= form_with(model: tweet) do |form| %>
+ 
+  <div class="newtweet">
+    <%= form.text_area :tweet ,class:"inp" %>
+
+
+
+    <%= form.submit :"Post",class:"post" %>
+</div>
+<% end %>

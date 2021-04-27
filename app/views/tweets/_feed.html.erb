@@ -1,0 +1,27 @@
+ <% if user_signed_in? %>
+<%= render 'tweets/form' ,tweet:@tweet%>
+<% end %>
+
+    <% @tweets.each do |tweet| %>
+    
+     <div class="tweets">
+     <div class="img">
+ <div class="pr"></div>
+
+<div class="in">
+      <span class="name"><%= tweet.user.name %></span>
+      <span class="uname"><%= tweet.user.username %></span>
+      <span class="tweet"><%= tweet.tweet %></span>
+         <% if user_signed_in? %>
+         <% if tweet.user==current_user %>
+         <ul>
+        <li><%= link_to 'Edit', edit_tweet_path(tweet) ,class:"link"%></li>
+        <li><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' },class:"link" %></li>
+        
+        </ul>
+        <% end %>
+        <% end %>
+     </div>
+          </div>
+               </div>
+    <% end %>
